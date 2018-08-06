@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>tictactoes</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-lg-3 col-md-3 col-sm-12">
+
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <div class="game-start-dialog">
+          <h3>let's play tic tac toe</h3>
+          <form action="start-game" id="start-game">
+            <input type="text" name="player1" placeholder="player one name">
+            <input type="text" name="player2" placeholder="player two name"><br>
+
+            <button>Let's go!</button>
+          </form>
+        </div>
+
+        <div class="game-over-modal">
+          <h2>Game over</h2>
+          <h2 id="message"></h2>
+          <button>Play again?</button>
+        </div>
+
+        <div class="gameboard">
+          <div class="grid"></div>
+          <div class="grid"></div>
+          <div class="grid"></div>
+          <div class="grid"></div>
+          <div class="grid"></div>
+          <div class="grid"></div>
+          <div class="grid"></div>
+          <div class="grid"></div>
+          <div class="grid"></div>
+          <div id="current-player"></div>
+        </div>
+
+          <label class="xo-label">
+            <input id="input1" type="radio" name="inputtype" value="x-o" checked> X and O<br>
+          </label>
+          <label class="Frontenddevlandia-label">
+            <input id="input2" type="radio" name="inputtype" value="Frontenddevlandia"> Frontenddevlandia <br>
+          </label>
+
+         <button id="undostack">undo</button><br>
+
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12">
+
+        </div>
+      </div>
+      </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.0.0.js"></script>
+    <script src="js/tictactoe.js"> </script>
+  </body>
+</html>
