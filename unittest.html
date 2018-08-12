@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>QUnit Example</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.6.1.css">
+</head>
+<body>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+
+<!--
+Stubs for unit testing
+-->
+<div class="gameboard">
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div id="current-player"></div>
+</div>
+
+
+<script src="https://code.jquery.com/qunit/qunit-2.6.1.js"></script>
+<script src="js/tictactoe_main.js"> </script>
+<script>
+    QUnit.test( "Check game over", function( assert ) {
+
+        let gameArray = ["", "", "", "", "", "", "", "", ""];
+        assert.ok(game.checkGameOver(gameArray).win == false, "No winner = Passed!" );
+
+        gameArray = ["x", "x", "x", "", "", "", "", "", ""];
+        assert.ok(game.checkGameOver(gameArray).win == true, "Win = Passed!" );
+        assert.ok(game.checkGameOver(gameArray).winner == "x", "Winner X = Passed!" );
+
+        gameArray = ["x", "x", "o", "x", "o", "", "o", "", "x"];
+        assert.ok(game.checkGameOver(gameArray).win == true, "Win = Passed!" );
+        assert.ok(game.checkGameOver(gameArray).winner == "o", "Winner O = Passed!" );
+
+        gameArray = ["x", "o", "x", "x", "o", "o", "o", "x", "x"];
+        assert.ok(game.checkGameOver(gameArray).win == true, "Win = Game Over!" );
+        assert.ok(game.checkGameOver(gameArray).winner == "tie", "Winner = Tie!" );
+
+    });
+
+    QUnit.test( "Check player attributes", function( assert ) {
+
+        let game;
+        let gameArray = ["x", "o", "", "", "", "", "", "", ""];
+        game = gameFactory("p1", "p2");
+        let players = game.getPlayers();
+        console.log(players);
+        assert.ok(players.length==2, "number of players is 2");
+        assert.ok(players[0].name=='p1', "player 1 is p1");
+        assert.ok(players[0].symbol=='x', "player 1 is x");
+        assert.ok(players[0].makeMove(0,gameArray)== false,"position 0 is occupied");
+        assert.ok(players[0].makeMove(2,gameArray)[2]== 'x' ,"next move is x");
+
+    });
+</script>
+</body>
+</html>

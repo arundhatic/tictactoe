@@ -29,6 +29,10 @@ const gameFactory = (name1, name2) => {
 
   const undoButton = document.querySelector("#undostack");
 
+  function redrawBoard(){
+      drawBoard(gameArray, currentPlayer);
+  }
+
   function drawBoard(gameArray, currentPlayer) {
 
     if(document.getElementById("input2").checked === true){
@@ -166,6 +170,8 @@ const gameFactory = (name1, name2) => {
 
   function play() {
     showGameboard();
+    document.querySelector("#input1").onclick = redrawBoard;
+    document.querySelector("#input2").onclick = redrawBoard;
     drawBoard(gameArray, currentPlayer);
     gridSquares.forEach((s, i) => {
       s.onclick = () => takeOneTurn(s, i);
@@ -178,26 +184,20 @@ const gameFactory = (name1, name2) => {
     };
 
   }
+
+  function getPlayers() {
+    return [player1, player2]
+  }
+
   return {
+    checkGameOver,
+    getPlayers,
     play
   };
 };
 
-const startGameForm = document.querySelector("#start-game");
-startGameForm.onsubmit = function(e) {
-  e.preventDefault();
-  startGame(startGameForm.player1.value, startGameForm.player2.value);
-  const startDialog = document.querySelector(".game-start-dialog");
-  Object.assign(startDialog.style, {
-    opacity: "0",
-    transform: "translate(-50%, -500px)"
-  });
-};
 
-function startGame(player1, player2) {
-    let game;
-    game = gameFactory(startGameForm.player1.value, startGameForm.player2.value);
-    game.play();
-}
+
+const game = gameFactory("1", "2");
 
 
