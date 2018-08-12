@@ -9,3 +9,4 @@ An Online web based Tic Tac Toe Game :
 
 3. While playing the game, one can switch on the fly between the two options
 4. The responsive framework used is bootstrap 4
+5. unittest.html was added that includes the unit tests
